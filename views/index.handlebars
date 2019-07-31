@@ -1,0 +1,58 @@
+<div class="content">
+  <div class="banner row">  
+    <img src="assets/img/bobsBurgers.png">
+  </div>
+  <div class="burgerContent row">
+    <div class="left-well col-md-4 col-xs-12 col-sm-12">
+      <h2>Burgers of the Day!</h2>
+        {{#each burgers}}
+          {{#unless this.devoured}}
+            <div class="menu row">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <p> #{{this.id}} . {{this.burger_name}} </p>
+              </div>
+              <form action="burgers/update/{{this.id}}?_method=PUT" method="POST" id="offMenu" class="col-md-6 col-sm-6 col-xs-6">
+                <input type="hidden" name="devoured" value="false" class="col-md-6 col-sm-6 col-xs-6">
+                <button type="submit" class="btn btn-info">Order It!</button>
+              </form>
+            </div>  
+          {{/unless}}
+        {{/each}}
+    </div>
+
+    <div class="bottom-well col-md-4 col-xs-12 col-sm-12">
+      <h2>Add a Burger to the Menu</h2>
+      <form class="create-update-form" action="burgers/create" method="POST">
+        <div class="form-group row">
+          <label class="col-md-4 col-sm-4 col-xs-4" for="burgerInput">Burger Name:</label>
+          <input class="col-md-4 col-sm-4 col-xs-4" type="text" id="burgerInput" name="name">
+          <input type="hidden" name="devoured" value="false">
+          <button type="submit" class="btn btn-info col-md-4 col-sm-4 col-xs-4">Add Burger</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="right-well col-md-4 col-xs-12 col-sm-12">
+      <h2>Burger Order</h2>
+        {{#each burgers}}
+          {{#if this.devoured}}
+            <div class="order row">
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <p> #{{this.id}} . {{this.burger_name}} </p>
+              </div>
+              <form action="burgers/delete/{{this.id}}?_method=DELETE" method="POST" id="offOrder">
+                <button type="submit" class="btn btn-info"> Take Off My Order</button>
+              </form>
+            </div>
+          {{/if}}
+        {{/each}}
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; copyright Tasha and Bobs Burgers</p>
+</footer>
+
+
+
