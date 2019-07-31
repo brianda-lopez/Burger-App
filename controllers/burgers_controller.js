@@ -11,7 +11,7 @@ var burger = require("../models/burger.js");
 
 router.get("/", function(req, res) {
 
-  burger.selectall(function(data) {
+  burger.all(function(data) {
     var hbsObject = {
       burgers: data
       //console.log(data);
