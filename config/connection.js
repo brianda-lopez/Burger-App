@@ -14,16 +14,34 @@ if(process.env.JAWSDB_URL){
   });
 };
 
-//Make Connection
 connection.connect(function(err) {
-    if (err) {
-        console.error("error connecting: " + err.stack);
-        return;
-    }
-    console.log("connected as id " + connection.threadId);
+  if (err) throw err;
+  console.log("Successfully connected to MySQL! Connected as ID: " + connection.threadId);
 });
 
-
-
-// Export connection for our ORM to use.
+// export connection to ORM
 module.exports = connection;
+
+// //Make Connection
+// connection.connect(function(err) {
+//     if (err) {
+//         console.error("error connecting: " + err.stack);
+//         return;
+//     }
+//     console.log("connected as id " + connection.threadId);
+// });
+
+
+
+// // Export connection for our ORM to use.
+// module.exports = connection;
+
+
+
+// connection.connect(function(err) {
+//     if (err) throw err;
+//     console.log("Successfully connected to MySQL! Connected as ID: " + connection.threadId);
+// });
+
+// // export connection to ORM
+// module.exports = connection;
